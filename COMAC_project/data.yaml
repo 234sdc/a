@@ -1,7 +1,7 @@
-train: D:\faults_detection\COMAC_dataset\train.txt  # train images (relative to 'path') 4 images
-val: D:\faults_detection\COMAC_dataset\val.txt  # val images (relative to 'path') 4 images
+train: D:\faults_detection\COMAC_dataset\train.txt # train images (relative to 'path') 4 images
+val: D:\faults_detection\COMAC_dataset\val.txt # val images (relative to 'path') 4 images
 
 nc: 6
 
 # class names
-names: ['papertape','plasticbag','attachment','strip','hardware','alumchips']
+names: ["papertape", "plasticbag", "attachment", "strip", "hardware", "alumchips"]
