@@ -73,6 +73,7 @@ from ultralytics.nn.modules import (
     YOLOESegment26,
     v10Detect,
 )
+from ultralytics.nn.modules.ccfm import CCFM
 from ultralytics.utils import DEFAULT_CFG_DICT, LOGGER, YAML, colorstr, emojis
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
 from ultralytics.utils.loss import (
@@ -1670,6 +1671,15 @@ def parse_model(d, ch, verbose=True):
             args = [ch[f]]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
+
+        elif m is CCFM:
+            # 1. 动态获取前面层的真实输出通道组成列表 [c_in1, c_in2...]
+            c1 = [ch[x] for x in f]
+            # 2. 根据 yaml 中设定的尺寸 (n, s, m...) 动态缩放输出通道 c2
+            c2 = make_divisible(args[0] * width, 8)
+            # 3. 重新打包参数，交给 CCFM(c1, c2) 实例化
+            args = [c1, c2]
+            
         elif m in frozenset(
             {
                 Detect,
