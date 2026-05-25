@@ -1679,7 +1679,7 @@ def parse_model(d, ch, verbose=True):
             c2 = make_divisible(args[0] * width, 8)
             # 3. 重新打包参数，交给 CCFM(c1, c2) 实例化
             args = [c1, c2]
-            
+
         elif m in frozenset(
             {
                 Detect,
