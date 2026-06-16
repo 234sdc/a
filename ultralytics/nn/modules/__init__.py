@@ -60,6 +60,7 @@ from .block import (
     SCDown,
     TorchVision,
 )
+from .ccfm import CCFM
 from .conv import (
     CBAM,
     ChannelAttention,
@@ -106,8 +107,6 @@ from .transformer import (
     TransformerLayer,
 )
 
-from .ccfm import CCFM
-
 __all__ = (
     "AIFI",
     "C1",
@@ -116,6 +115,7 @@ __all__ = (
     "C3",
     "C3TR",
     "CBAM",
+    "CCFM",
     "CIB",
     "DFL",
     "ELAN1",
@@ -189,5 +189,4 @@ __all__ = (
     "YOLOESegment",
     "YOLOESegment26",
     "v10Detect",
-    "CCFM",
 )
